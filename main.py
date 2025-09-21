@@ -1,5 +1,6 @@
 import dash
-from dash import dcc, html, Input, Output, ClientsideFunction
+from dash import dcc, html, Input, Output
+from dash.dependencies import ClientsideFunction
 import numpy as np
 import pandas as pd
 import datetime
@@ -544,7 +545,7 @@ app.layout = html.Div(
                         dcc.Graph(id="patient_volume_hm"),
                         html.Div(
                             id="reset-btn-outer",
-                            children=html.Button(id="reset-btn", children="Show All", n_clicks=0), 
+                            children=html.Button(id="reset-btn", children="Show All", n_clicks=0),
                         ),
                     ],
                 ),
@@ -553,7 +554,7 @@ app.layout = html.Div(
                     children=[
                         html.B("Patient Wait Time and Satisfactory Scores"),
                         html.Hr(),
-                        html.Div(id="wait_time_tabel", children=initialize_table()),
+                        html.Div(id="wait_time_table", children=initialize_table()),
                     ],
                 ),
             ],
@@ -639,7 +640,7 @@ def update_table(start, end, clinic, admit_type, heatmap_click, reset_click, *ar
         clicked_df = filtered_df[
             (filtered_df["Days of Wk"] == weekday)
             & (filtered_df["Check-In Hour"] == hour_of_day)
-        ] 
+        ]
         departments = clicked_df["Department"].unique()
         filtered_df = clicked_df
 
@@ -656,17 +657,17 @@ def update_table(start, end, clinic, admit_type, heatmap_click, reset_click, *ar
 
     if prop_type != "selectedData" or (
         prop_type == "selectedData" and triggered_value is None
-    ): 
+    ):
 
         for department in departments:
             department_wait_time_figure = create_table_figure(
-                department, filtered_df, "Wait Time Min", wait_time_xrange, ""
+                department, filtered_df, "Wait Time Min", wait_time_xrange, []
             )
             figure_list.append(department_wait_time_figure)
 
         for department in departments:
             department_score_figure = create_table_figure(
-                department, filtered_df, "Care Score", score_xrange, ""
+                department, filtered_df, "Care Score", score_xrange, []
             )
             figure_list.append(department_score_figure)
 
@@ -709,4 +710,4 @@ def update_table(start, end, clinic, admit_type, heatmap_click, reset_click, *ar
 
 # Run the server
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0", port=10030, debug=True)
