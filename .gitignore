@@ -1,10 +1,49 @@
-# Python-generated files
+# -------------------------
+# Python cache & artifacts
+# -------------------------
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.so
+
+# Build / packaging
 build/
 dist/
 wheels/
-*.egg-info
+.eggs/
+.installed.cfg
 
+# -------------------------
 # Virtual environments
-.venv
+# -------------------------
+.venv/
+venv/
+ENV/
+env/
+.conda/
+
+# -------------------------
+# IDE / Editor files
+# -------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -------------------------
+# OS-specific junk
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Logs / temporary
+# -------------------------
+*.log
+*.tmp
+*.swp
+*.bak

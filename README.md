@@ -1,15 +1,44 @@
-## Programmer Assessment Q4
+# Assessment Debugging
 
-This repository contains a broken web app built with Dash. Please follow the tasks below.
+This is a Dash-based assessment project.  
+Follow the steps below to set up and run the app on a clean Ubuntu machine.
 
-Tasks:
-1. Clone this repo to your machine.
-2. Fix missing dependencies and fill authors section in `pyproject.toml`.
-3. Fix bugs prevent the app `main.py` from running.
-4. Change port the app ruuning on to `10030`.
-5. Commit you changes.
-6. Update `README.md` with a instruction
-   1. Assuming the user has a fresh minimum Linux installation with no python.
-   2. Setup python and virtual environment for this app, remember to use the fixed `pyproject.toml`.
-   3. How to run this app and how to access it without portforwarding.
-7. Push all the changes to your own repository on Github, and provide a link to your own repo in your submission in the last.
+---
+
+## Setup Instructions
+
+### 1. Install system dependencies
+Update package lists and install required tools, Git, and Python 3.11:
+
+```
+sudo apt-get update -y
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+sudo apt-get update -y
+sudo apt-get install -y git python3.11 python3.11-venv
+```
+### 2. Create and activate a virtual environment
+```
+python3.11 -m venv .venv
+source .venv/bin/activate
+```
+### 3. Clone the repository
+```
+git clone https://github.com/MChikani/Assessment-debugging.git
+cd Assessment-debugging
+```
+### 4. Upgrade pip
+```
+python -m pip install --upgrade pip
+```
+### 5. Install project dependencies
+```
+python -m pip install .
+```
+### 6. Run the application
+```
+python main.py
+```
+### 7. Open the app in your browser
+
+Open the URL in your browser http://127.0.0.1:10030/ to view it.
